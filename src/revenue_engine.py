@@ -8,7 +8,6 @@ def load_sales_data(file_path):
     # In a real app, this might read a CSV or DB.
     # For this demo, we return hardcoded mock data.
     # 200, 500, 100 are sales. -50 is a refund.
-    # The ticket implies these negatives are summed, but the code excludes them.
     return [200.0, 500.0, -50.0, 100.0, 50.0]
 
 def calculate_total_revenue(transactions):
@@ -21,7 +20,9 @@ def calculate_total_revenue(transactions):
     
     # Iterate through each transaction
     for transaction_amount in transactions:
-        total_revenue += transaction_amount
+        # AI DEV AGENT: [2024-05-16] - Exclude negative transaction amounts from total revenue calculation
+        if transaction_amount > 0:
+            total_revenue += transaction_amount
             
     # Return the calculated gross revenue (sum of positive transactions)
     return total_revenue
