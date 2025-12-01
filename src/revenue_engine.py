@@ -20,7 +20,7 @@ def calculate_total_revenue(transactions):
     
     # Iterate through each transaction
     for transaction_amount in transactions:
-        # AI DEV AGENT: [2024-05-16] - Exclude negative transaction amounts from total revenue calculation
+        # AI DEV AGENT: [2024-05-17] - Ensure only positive transaction amounts are included in total revenue calculation.
         if transaction_amount > 0:
             total_revenue += transaction_amount
             
