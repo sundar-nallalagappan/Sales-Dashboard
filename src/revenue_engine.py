@@ -19,8 +19,17 @@ def calculate_total_revenue(transactions):
     total_revenue = 0.0
     
     # Iterate through each transaction
-    for transaction_amount in transactions:
-            total_revenue += transaction_amount
+    for transaction in transactions:
+        # Check if the transaction is a dictionary with an 'amount' key
+        if isinstance(transaction, dict) and 'amount' in transaction:
+            amount = transaction['amount']
+        else:
+            # Assume it's a direct numerical value
+            amount = transaction
+            
+        # AI DEV AGENT: Add logic to ignore negative values
+        if amount > 0:
+            total_revenue += amount
             
     # Return the calculated gross revenue (sum of positive transactions)
     return total_revenue
