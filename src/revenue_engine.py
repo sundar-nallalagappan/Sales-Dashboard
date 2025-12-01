@@ -17,7 +17,7 @@ def calculate_total_revenue(transactions):
     """
     total = 0.0
     for t in transactions:
-        total += t  # <--- BUG: This adds negative numbers, reducing revenue.
+        total += t  
     return total
 
 if __name__ == "__main__":
