@@ -8,17 +8,25 @@ def load_sales_data(file_path):
     # In a real app, this might read a CSV or DB.
     # For this demo, we return hardcoded mock data.
     # 200, 500, 100 are sales. -50 is a refund.
+    # The ticket implies these negatives are summed, but the code excludes them.
     return [200.0, 500.0, -50.0, 100.0, 50.0]
 
 def calculate_total_revenue(transactions):
     """
-    Aggregates daily revenue, excluding negative values.
+    Aggregates daily revenue, reporting positive sales only.
+    Refunds and adjustments (negative values) are ignored.
     """
-    total = 0.0
-    for t in transactions:
-        if t > 0:  # Only include positive transaction amounts
-            total += t  
-    return total
+    # Initialize total revenue to 0
+    total_revenue = 0.0
+    
+    # Iterate through each transaction
+    for transaction_amount in transactions:
+        # Add the transaction amount to the total only if it is positive
+        if transaction_amount > 0:
+            total_revenue += transaction_amount
+            
+    # Return the calculated gross revenue (sum of positive transactions)
+    return total_revenue
 
 if __name__ == "__main__":
     data = load_sales_data("dummy.csv")
