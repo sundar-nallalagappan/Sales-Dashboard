@@ -12,12 +12,12 @@ def load_sales_data(file_path):
 
 def calculate_total_revenue(transactions):
     """
-    Aggregates daily revenue. 
-    Current Logic: Sums all transactions.
+    Aggregates daily revenue, excluding negative values.
     """
     total = 0.0
     for t in transactions:
-        total += t  
+        if t > 0:  # Only include positive transaction amounts
+            total += t  
     return total
 
 if __name__ == "__main__":
