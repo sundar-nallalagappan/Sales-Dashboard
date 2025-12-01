@@ -27,7 +27,8 @@ def calculate_total_revenue(transactions):
             # Assume it's a direct numerical value
             amount = transaction
             
-        # AI DEV AGENT: Add logic to ignore negative values
+        # AI DEV AGENT: The requirement is to report Gross Revenue (positive sales only).
+        # This logic correctly ignores negative values (refunds/adjustments).
         if amount > 0:
             total_revenue += amount
             
