@@ -21,9 +21,7 @@ def calculate_total_revenue(transactions):
     
     # Iterate through each transaction
     for transaction_amount in transactions:
-        # Add the transaction amount to the total only if it is positive
-        if transaction_amount > 0:
-            total_revenue += transaction_amount
+        total_revenue += transaction_amount
             
     # Return the calculated gross revenue (sum of positive transactions)
     return total_revenue
