@@ -1,8 +1,15 @@
-import pytest
+
+import unittest
 from src.revenue_engine import calculate_total_revenue
 
-def test_calculate_total_revenue_with_negative_values():
-    """Test that negative values (refunds) are ignored and not subtracted."""
-    transactions = [200.0, 500.0, -50.0, 100.0, 50.0]
-    expected_revenue = 200.0 + 500.0 + 100.0 + 50.0  # Only positive values
-    assert calculate_total_revenue(transactions) == expected_revenue
+class TestRevenueCalculation(unittest.TestCase):
+
+    def test_ignores_negative_transactions(self):
+        """Test that negative transaction amounts (refunds) are ignored."""
+        transactions = [100.0, 200.0, -50.0, 300.0, -20.0]
+        expected_revenue = 100.0 + 200.0 + 300.0  # Only positive values should sum up
+        actual_revenue = calculate_total_revenue(transactions)
+        self.assertEqual(actual_revenue, expected_revenue)
+
+if __name__ == "__main__":
+    unittest.main()
