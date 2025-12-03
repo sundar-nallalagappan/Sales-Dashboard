@@ -20,6 +20,8 @@ def calculate_total_revenue(transactions):
     
     # Iterate through each transaction
     for transaction in transactions:
+        # AI DEV AGENT: Exclude negative values (refunds/adjustments) from total revenue calculation.
+        if transaction > 0:
             total_revenue += transaction
             
     # Return the calculated gross revenue (sum of positive transactions)
